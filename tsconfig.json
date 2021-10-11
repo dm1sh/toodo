@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
-    "lib": ["DOM"],
-    "module": "ES2020",
+    "lib": ["es6", "DOM", "dom.iterable"],
+    "module": "ESNext",
     "moduleResolution": "node"
   }
 }
