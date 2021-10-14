@@ -1,13 +1,13 @@
-import {
-  Checkbox,
-  IconButton,
-  ListItem,
-  ListItemSecondaryAction,
-  ListItemText,
-  TextField,
-} from "@mui/material";
-import DeleteOutlined from "@mui/icons-material/DeleteOutlined";
 import React, { useState } from "react";
+
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import ListItem from "@mui/material/ListItem";
+import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
+import ListItemText from "@mui/material/ListItemText";
+import TextField from "@mui/material/TextField";
+import DeleteOutlined from "@mui/icons-material/DeleteOutlined";
+
 import { TaskItemT } from "./types";
 
 export type TodoItemProps = { task: TaskItemT };
@@ -27,7 +27,8 @@ export const TodoItem: React.FC<TodoItemProps> = ({ task }) => {
           value={text}
           autoFocus={true}
           onBlur={() => setEditing(false)}
-        ></TextField>
+          multiline
+        />
       ) : (
         <ListItemText onClick={() => setEditing(true)} primary={text} />
       )}

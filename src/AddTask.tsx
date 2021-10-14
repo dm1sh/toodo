@@ -4,7 +4,7 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import InputBase from "@mui/material/InputBase";
 import TrapFocus from "@mui/material/Unstable_TrapFocus";
 import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 
 export const AddTask: React.FC = () => {
   const [open, setOpen] = useState(true);

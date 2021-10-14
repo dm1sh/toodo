@@ -1,8 +1,8 @@
-import { Fab, Box } from "@mui/material";
-import Add from "@mui/icons-material/Add";
 import React from "react";
 
-/* TODO: create component for task adding */
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
+import Add from "@mui/icons-material/Add";
 
 export const AppBar: React.FC = () => (
   <Box sx={{ width: "100%", justifyContent: "center", display: "flex" }}>
