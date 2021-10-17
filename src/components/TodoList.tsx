@@ -4,18 +4,16 @@ import List from "@mui/material/List";
 import Paper from "@mui/material/Paper";
 
 import { TodoItem } from "./TodoItem";
-import { TaskItemT } from "../types";
+import { useAppSelector } from "../hooks";
 
-export type TodoListProps = {
-  tasks: TaskItemT[];
-};
+export const TodoList: React.FC = () => {
+  const tasks = useAppSelector((state) => state.todo.tasks);
 
-export const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
   return (
     <Paper variant="outlined">
       <List>
-        {tasks.map((task) => (
-          <TodoItem key={task.id} task={task} />
+        {tasks.map((task, index) => (
+          <TodoItem key={task.id} task={task} index={index} />
         ))}
       </List>
     </Paper>

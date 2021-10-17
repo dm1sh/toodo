@@ -1,25 +1,17 @@
 import React from "react";
+import { Provider } from "react-redux";
 
 import { Layout } from "./components/Layout";
 import { TodoList } from "./components/TodoList";
 import { AppBar } from "./components/AppBar";
-import { TaskItemT } from "./types";
 import { AddTask } from "./components/AddTask";
-
-const tasks: TaskItemT[] = [
-  { text: "test", done: false, id: 0 },
-  { text: "Long, a bit tooooooo0000000000oooooo long test", done: true, id: 1 },
-];
+import store from "./store";
 
 export const App = () => {
   return (
-    <>
-      <Layout
-        appBar={<AppBar />}
-        title="My tasks"
-        content={<TodoList tasks={tasks} />}
-      />
+    <Provider store={store}>
+      <Layout appBar={<AppBar />} title="My tasks" content={<TodoList />} />
       <AddTask />
-    </>
+    </Provider>
   );
 };
