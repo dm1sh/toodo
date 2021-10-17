@@ -3,15 +3,24 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TaskItemT } from "../../types";
 
 const initialState: { tasks: TaskItemT[] } = {
-  tasks: [],
+  tasks: [
+    { done: true, id: 1, text: "hello" },
+    { done: false, id: 2, text: "goodbye" },
+  ],
 };
 
 export const todoSlice = createSlice({
   name: "todo",
-  initialState,
+  initialState: initialState,
   reducers: {
     add: (state, { payload }: PayloadAction<TaskItemT>) => {
       state.tasks.push(payload);
+    },
+    updateText: (
+      state,
+      { payload }: PayloadAction<{ index: number; text: string }>
+    ) => {
+      state.tasks[payload.index].text = payload.text;
     },
     markDone: (
       state,
@@ -20,11 +29,11 @@ export const todoSlice = createSlice({
       state.tasks[payload.index].done = payload.value;
     },
     remove: (state, { payload }: PayloadAction<number>) => {
-      state.tasks.splice(payload);
+      state.tasks.splice(payload, 1);
     },
   },
 });
 
-export const { add, markDone, remove } = todoSlice.actions;
+export const { add, updateText, markDone, remove } = todoSlice.actions;
 
 export default todoSlice.reducer;

@@ -9,8 +9,8 @@ import TextField from "@mui/material/TextField";
 import DeleteOutlined from "@mui/icons-material/DeleteOutlined";
 
 import { TaskItemT } from "../types";
-import { useAppDispatch } from "../hooks";
-import { markDone, remove } from "../store/slices/todo";
+import { useAppDispatch, useInputValue } from "../hooks";
+import { updateText, markDone, remove } from "../store/slices/todo";
 
 export type TodoItemProps = { task: TaskItemT; index: number };
 
@@ -20,6 +20,9 @@ export const TodoItem: React.FC<TodoItemProps> = ({ task, index }) => {
   const dispatch = useAppDispatch();
 
   const [editing, setEditing] = useState(false);
+  const { value, onChange, submit } = useInputValue(text, (submitValue) =>
+    dispatch(updateText({ index, text: submitValue }))
+  );
 
   return (
     <ListItem>
@@ -31,9 +34,13 @@ export const TodoItem: React.FC<TodoItemProps> = ({ task, index }) => {
         <TextField
           fullWidth
           variant="standard"
-          value={text}
+          value={value}
           autoFocus={true}
-          onBlur={() => setEditing(false)}
+          onChange={onChange}
+          onBlur={() => {
+            setEditing(false);
+            submit();
+          }}
           multiline
         />
       ) : (
