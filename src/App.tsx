@@ -10,8 +10,16 @@ import store from "./store";
 export const App = () => {
   return (
     <Provider store={store}>
-      <Layout appBar={<AppBar />} title="My tasks" content={<TodoList />} />
-      <AddTask />
+      <Layout
+        appBar={<AppBar />}
+        title="My tasks"
+        content={
+          <>
+            <TodoList />
+            <AddTask />
+          </>
+        }
+      />
     </Provider>
   );
 };

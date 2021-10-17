@@ -51,6 +51,8 @@ export const AddTask: React.FC = () => {
             top: (theme) => "-" + theme.spacing(2),
             left: 0,
             background: (theme) => theme.palette.background.paper,
+            backgroundImage:
+              "linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))",
           }}
         />
         <InputBase
