@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import InputBase from "@mui/material/InputBase";
@@ -6,11 +6,15 @@ import TrapFocus from "@mui/material/Unstable_TrapFocus";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-export const AddTask: React.FC = () => {
-  const [open, setOpen] = useState(true);
+import { useAppDispatch, useAppSelector } from "../hooks";
+import {
+  open as openAction,
+  close as closeAction,
+} from "../store/slices/uiState";
 
-  const onOpen = () => setOpen(true);
-  const onClose = () => setOpen(false);
+export const AddTask: React.FC = () => {
+  const open = useAppSelector((state) => state.uiState.addBarOpen);
+  const dispatch = useAppDispatch();
 
   return (
     <TrapFocus open={open}>
@@ -24,8 +28,8 @@ export const AddTask: React.FC = () => {
         }}
         anchor="bottom"
         open={open}
-        onOpen={onOpen}
-        onClose={onClose}
+        onOpen={() => dispatch(openAction())}
+        onClose={() => dispatch(closeAction())}
       >
         <Box
           sx={{
