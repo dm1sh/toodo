@@ -19,7 +19,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: publite/frontend
+          images: dm1sh/toodo
           tags: |
             type=ref,event=branch
             type=ref,event=pr
