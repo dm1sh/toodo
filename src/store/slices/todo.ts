@@ -3,18 +3,18 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TaskItemT } from "../../types";
 
 const initialState: { tasks: TaskItemT[] } = {
-  tasks: [
-    { done: true, id: 1, text: "hello" },
-    { done: false, id: 2, text: "goodbye" },
-  ],
+  tasks: [],
 };
 
 export const todoSlice = createSlice({
   name: "todo",
   initialState: initialState,
   reducers: {
+    hydrate: (state, { payload }) => {
+      state.tasks = payload;
+    },
     add: (state, { payload }: PayloadAction<string>) => {
-      const newId = state.tasks[state.tasks.length - 1]?.id ?? 0;
+      const newId = (state.tasks[state.tasks.length - 1]?.id ?? -1) + 1;
 
       state.tasks.push({
         done: false,
@@ -40,6 +40,6 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { add, updateText, markDone, remove } = todoSlice.actions;
+export const { hydrate, add, updateText, markDone, remove } = todoSlice.actions;
 
 export default todoSlice.reducer;
