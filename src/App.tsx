@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Layout } from "./Layout";
-import { TodoList } from "./TodoList";
-import { AppBar } from "./AppBar";
+import { Layout } from "./components/Layout";
+import { TodoList } from "./components/TodoList";
+import { AppBar } from "./components/AppBar";
 import { TaskItemT } from "./types";
-import { AddTask } from "./AddTask";
+import { AddTask } from "./components/AddTask";
 
 const tasks: TaskItemT[] = [
   { text: "test", done: false, id: 0 },

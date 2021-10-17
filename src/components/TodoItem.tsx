@@ -8,7 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import TextField from "@mui/material/TextField";
 import DeleteOutlined from "@mui/icons-material/DeleteOutlined";
 
-import { TaskItemT } from "./types";
+import { TaskItemT } from "../types";
 
 export type TodoItemProps = { task: TaskItemT };
 
