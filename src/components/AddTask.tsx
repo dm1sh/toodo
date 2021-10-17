@@ -34,6 +34,8 @@ export const AddTask: React.FC = () => {
           "& .MuiDrawer-paperAnchorBottom": {
             overflowY: "visible",
             padding: (theme) => theme.spacing(0, 2, 2, 2),
+            maxWidth: "100vh",
+            margin: "0 auto",
           },
           position: "relative",
         }}
