@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import uiStateReducer from "./slices/uiState";
+
 const store = configureStore({
-  reducer: {},
+  reducer: { uiState: uiStateReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
