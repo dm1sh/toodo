@@ -13,8 +13,14 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState: initialState,
   reducers: {
-    add: (state, { payload }: PayloadAction<TaskItemT>) => {
-      state.tasks.push(payload);
+    add: (state, { payload }: PayloadAction<string>) => {
+      const newId = state.tasks[state.tasks.length - 1]?.id ?? 0;
+
+      state.tasks.push({
+        done: false,
+        text: payload,
+        id: newId,
+      });
     },
     updateText: (
       state,

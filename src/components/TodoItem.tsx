@@ -36,7 +36,10 @@ export const TodoItem: React.FC<TodoItemProps> = ({ task, index }) => {
           variant="standard"
           value={value}
           autoFocus={true}
-          onChange={onChange}
+          onFocus={(e) => {
+            e.currentTarget.setSelectionRange(value.length, value.length);
+          }}
+          onChange={(e) => onChange(e.currentTarget.value)}
           onBlur={() => {
             setEditing(false);
             submit();

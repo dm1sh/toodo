@@ -4,7 +4,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store";
 
 export type UseInputValueReturnT = {
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange: (value: string) => void;
   submit: () => void;
   value: string;
 };
@@ -16,7 +16,7 @@ export const useInputValue = (
   const [value, setValue] = useState(initialValue);
 
   return {
-    onChange: (e) => setValue(e.currentTarget.value),
+    onChange: (value) => setValue(value),
     submit: () => onSubmit(value),
     value,
   };

@@ -6,15 +6,26 @@ import TrapFocus from "@mui/material/Unstable_TrapFocus";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector, useInputValue } from "../hooks";
 import {
   open as openAction,
   close as closeAction,
 } from "../store/slices/uiState";
+import { add } from "../store/slices/todo";
 
 export const AddTask: React.FC = () => {
   const open = useAppSelector((state) => state.uiState.addBarOpen);
   const dispatch = useAppDispatch();
+
+  const { value, onChange, submit } = useInputValue("", (submitValue) =>
+    dispatch(add(submitValue))
+  );
+
+  const save = () => {
+    submit();
+    onChange("");
+    dispatch(closeAction());
+  };
 
   return (
     <TrapFocus open={open}>
@@ -46,10 +57,15 @@ export const AddTask: React.FC = () => {
           fullWidth
           placeholder="New task"
           autoFocus={open}
+          value={value}
+          onFocus={(e) => {
+            e.currentTarget.setSelectionRange(value.length, value.length);
+          }}
+          onChange={(e) => onChange(e.currentTarget.value)}
           multiline
         />
         <Box sx={{ paddingTop: (theme) => theme.spacing(1) }}>
-          <Button variant="text" sx={{ float: "right" }}>
+          <Button onClick={save} variant="text" sx={{ float: "right" }}>
             Save
           </Button>
         </Box>
