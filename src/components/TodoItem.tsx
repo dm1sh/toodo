@@ -47,7 +47,9 @@ export const TodoItem: React.FC<TodoItemProps> = ({ task, index }) => {
           }}
           onChange={(e) => change(e.currentTarget.value)}
           onBlur={save}
-          inputProps={{ onKeyDown: (e) => enterHandler(save) }}
+          inputProps={{
+            onKeyDown: enterHandler(save),
+          }}
           multiline
         />
       ) : (
