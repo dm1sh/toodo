@@ -7,8 +7,7 @@ import InboxIcon from "@mui/icons-material/Inbox";
 export const EmptyList: React.FC = () => (
   <Box
     sx={{
-      padding: (theme) => theme.spacing(1),
-      paddingBottom: (theme) => theme.spacing(3),
+      paddingBottom: (theme) => theme.spacing(2),
       textAlign: "center",
     }}
   >
