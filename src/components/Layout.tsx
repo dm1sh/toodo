@@ -29,7 +29,7 @@ export const Layout: React.FC<LayoutProps> = ({ appBar, content, title }) => {
       <CssBaseline />
       <Box sx={{ padding: (theme) => theme.spacing(2, 2, 10, 2) }}>
         <Typography variant="h4" sx={{ paddingLeft: 2, marginBottom: 2 }}>
-          <Checkbox sx={{ visibility: "hidden" }} />
+          <Checkbox aria-hidden={true} sx={{ visibility: "hidden" }} />
           {title}
         </Typography>
         {content}
