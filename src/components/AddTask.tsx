@@ -12,18 +12,19 @@ import {
   close as closeAction,
 } from "../store/slices/uiState";
 import { add } from "../store/slices/todo";
+import { enterHandler } from "../utils";
 
 export const AddTask: React.FC = () => {
   const open = useAppSelector((state) => state.uiState.addBarOpen);
   const dispatch = useAppDispatch();
 
-  const { value, onChange, submit } = useInputValue("", (submitValue) =>
+  const { value, change, submit } = useInputValue("", (submitValue) =>
     dispatch(add(submitValue))
   );
 
   const save = () => {
     submit();
-    onChange("");
+    change("");
     dispatch(closeAction());
   };
 
@@ -58,6 +59,7 @@ export const AddTask: React.FC = () => {
           }}
         />
         <InputBase
+          sx={{ "& .MuiInputBase-inputMultiline": { whiteSpace: "pre-wrap" } }}
           fullWidth
           placeholder="New task"
           autoFocus={open}
@@ -65,7 +67,8 @@ export const AddTask: React.FC = () => {
           onFocus={(e) => {
             e.currentTarget.setSelectionRange(value.length, value.length);
           }}
-          onChange={(e) => onChange(e.currentTarget.value)}
+          onChange={(e) => change(e.currentTarget.value)}
+          onKeyDown={enterHandler(save)}
           multiline
         />
         <Box sx={{ paddingTop: (theme) => theme.spacing(1) }}>

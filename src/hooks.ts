@@ -4,7 +4,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store";
 
 export type UseInputValueReturnT = {
-  onChange: (value: string) => void;
+  change: (value: string) => void;
   submit: () => void;
   value: string;
 };
@@ -16,7 +16,7 @@ export const useInputValue = (
   const [value, setValue] = useState(initialValue);
 
   return {
-    onChange: (value) => setValue(value),
+    change: (value) => setValue(value),
     submit: () => onSubmit(value),
     value,
   };

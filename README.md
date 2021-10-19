@@ -38,7 +38,6 @@ npm run dev
 
 ## TODO
 
-- Add task saving on Enter key press, remapping new line to Shift+Enter
 - Convert to monorepo and add backend for tasks syncing
 - Add ServiceWorker
 - Switch to IndexedDB

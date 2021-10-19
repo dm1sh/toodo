@@ -11,6 +11,7 @@ import DeleteOutlined from "@mui/icons-material/DeleteOutlined";
 import { TaskItemT } from "../types";
 import { useAppDispatch, useInputValue } from "../hooks";
 import { updateText, markDone, remove } from "../store/slices/todo";
+import { enterHandler } from "../utils";
 
 export type TodoItemProps = { task: TaskItemT; index: number };
 
@@ -20,9 +21,14 @@ export const TodoItem: React.FC<TodoItemProps> = ({ task, index }) => {
   const dispatch = useAppDispatch();
 
   const [editing, setEditing] = useState(false);
-  const { value, onChange, submit } = useInputValue(text, (submitValue) =>
+  const { value, change, submit } = useInputValue(text, (submitValue) =>
     dispatch(updateText({ index, text: submitValue }))
   );
+
+  const save = () => {
+    setEditing(false);
+    submit();
+  };
 
   return (
     <ListItem>
@@ -39,17 +45,17 @@ export const TodoItem: React.FC<TodoItemProps> = ({ task, index }) => {
           onFocus={(e) => {
             e.currentTarget.setSelectionRange(value.length, value.length);
           }}
-          onChange={(e) => onChange(e.currentTarget.value)}
-          onBlur={() => {
-            setEditing(false);
-            submit();
-          }}
+          onChange={(e) => change(e.currentTarget.value)}
+          onBlur={save}
+          inputProps={{ onKeyDown: (e) => enterHandler(save) }}
           multiline
         />
       ) : (
         <ListItemText
           sx={{
             textDecoration: done ? "line-through" : undefined,
+            whiteSpace: "pre-wrap",
+            overflow: "hidden",
           }}
           onClick={() => setEditing(true)}
           primary={text}
