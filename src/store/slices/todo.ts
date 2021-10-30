@@ -10,7 +10,7 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState: initialState,
   reducers: {
-    hydrate: (state, { payload }) => {
+    hydrate: (state, { payload }: PayloadAction<TaskItemT[]>) => {
       state.tasks = payload;
     },
     add: (state, { payload }: PayloadAction<string>) => {
