@@ -1,7 +1,7 @@
 # Simple TODO application
 
 <p align="center">
-  <img src="https://github.com/dm1sh/toodo/raw/main/logo.png" alt="TooDo logo" width="150px">
+  <img src="./logo.png" alt="TooDo logo" width="150px">
 </p>
 
 ## Overview
